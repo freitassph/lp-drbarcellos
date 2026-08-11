@@ -1,0 +1,56 @@
+# Git and repository-only documentation
+.git/
+.github/
+.gitignore
+.vercelignore
+AGENTS.md
+README.md
+docs/
+
+# Local dependencies and generated output
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.cache/
+.parcel-cache/
+.turbo/
+coverage/
+.nyc_output/
+storybook-static/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+cypress/screenshots/
+cypress/videos/
+
+# Local environment, credentials and Vercel state
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.vercel/
+
+# Development-only project metadata
+metadata.json
+.vscode/
+.idea/
+
+# Logs, temporary files and operating-system metadata
+logs/
+*.log
+*.local
+*.tgz
+.tmp/
+tmp/
+temp/
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
