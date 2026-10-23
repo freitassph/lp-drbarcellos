@@ -44,7 +44,7 @@ Não clique nem envie mensagens em testes automatizados sem autorização. Valid
 
 - React `18.x` e React DOM `18.x` declarados em `package.json`.
 - TypeScript em modo estrito, sem emissão, configurado em `tsconfig.json`.
-- Vite `5.x` com `@vitejs/plugin-react`.
+- Vite `6.4.5` com `@vitejs/plugin-react`.
 - Lucide React para ícones.
 - Tailwind CSS carregado no navegador por `https://cdn.tailwindcss.com`.
 - Tokens, animações, breakpoints e estilos globais definidos inline em `index.html`.
@@ -63,13 +63,14 @@ Não existe atualmente:
 - variável de ambiente ou integração com Gemini;
 - suíte de testes, lint script ou CI versionada;
 - configuração local de deploy, domínio, `vercel.json` ou workflow GitHub Actions;
-- lockfile versionado.
+
+O grafo agora é fixado por `package-lock.json`.
 
 ### Atenção à resolução de dependências
 
-`package.json` é a fonte de verdade para o build local. O `importmap` de `index.html` referencia React 19, Vite 7 e outras versões hospedadas em `esm.sh`, enquanto o projeto local declara React 18 e Vite 5. No runtime Vite observado, os módulos são empacotados a partir das dependências locais; não trate o import map como versão efetiva sem provar seu uso.
+`package.json` é a fonte de verdade para o build local. O `importmap` de `index.html` referencia React 19, Vite 7 e outras versões hospedadas em `esm.sh`, enquanto o projeto local declara React 18 e Vite 6. No runtime Vite observado, os módulos são empacotados a partir das dependências locais; não trate o import map como versão efetiva sem provar seu uso.
 
-Tailwind está presente como dependência de desenvolvimento, mas a UI atual depende do CDN e da configuração inline de `index.html`; não existe `tailwind.config.*`, arquivo CSS de entrada ou pipeline PostCSS conectado ao app. Migrar do CDN é uma mudança arquitetural e visual, não uma limpeza automática.
+As dependências locais Tailwind/PostCSS/autoprefixer não são utilizadas e foram removidas; a UI depende do CDN e da configuração inline de `index.html`; não existe `tailwind.config.*`, arquivo CSS de entrada ou pipeline PostCSS conectado ao app. Migrar do CDN é uma mudança arquitetural e visual, não uma limpeza automática.
 
 ## Mapa de arquivos
 
@@ -300,7 +301,7 @@ O campo `homepageUrl` do GitHub ainda aponta para a URL antiga `https://land-pag
 
 ### Validação mínima
 
-O projeto não possui lockfile; `npm ci` não é aplicável. Depois de instalar dependências com npm, rode:
+O projeto possui lockfile canônico. Instale com `npm ci --ignore-scripts` e rode:
 
 ```bash
 npm run build
@@ -338,10 +339,10 @@ Use `domcontentloaded` e asserts de UI/rota para browser QA; não dependa de `ne
 Estes itens foram observados e devem orientar futuras tarefas; sua existência não amplia o escopo atual:
 
 1. Metadata `homepageUrl` do GitHub desatualizada; a URL antiga retorna `DEPLOYMENT_NOT_FOUND`, enquanto a URL real é `https://drbarcellos.vercel.app`.
-2. Ausência de lockfile e instalação não determinística.
+2. Manter instalação congelada pelo lockfile.
 3. Ausência de testes, lint e CI.
-4. Instalação atual reporta 1 vulnerabilidade moderada e 1 alta, ainda sem triagem determinística.
-5. Tailwind em CDN apesar das dependências locais.
+4. Manter triagem do grafo fixado no lockfile; alertas da instalação de 2026-08-11 são históricos.
+5. Tailwind em CDN, sem pin do recurso externo.
 6. Import map divergente das versões de `package.json`.
 7. `FloatingElements.tsx` não montado e `WA_LINK` geral sem uso no app.
 8. Gaps de teclado/foco/ARIA no menu mobile e FAQ.

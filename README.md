@@ -51,7 +51,7 @@ Modalidades exibidas:
 - React 18
 - React DOM 18
 - TypeScript 5
-- Vite 5
+- Vite 6.4.5
 - Lucide React
 - Tailwind CSS carregado por CDN
 - Google Fonts: Montserrat e Playfair Display
@@ -62,15 +62,15 @@ O projeto não possui backend, banco de dados, autenticação, API, analytics, f
 
 ### Pré-requisitos
 
-- Node.js compatível com Vite 5.
-- npm.
+- Node.js 24.22.1.
+- npm 12.2.1.
 
-O repositório não declara `engines` e não contém lockfile. Portanto, a instalação não é completamente reprodutível e `npm ci` não funciona até que um lockfile seja criado e versionado de forma intencional.
+O runtime é definido em `.nvmrc` e `engines`; o lockfile canônico fixa o grafo para `npm ci --ignore-scripts`.
 
 ### Instalação e desenvolvimento
 
 ```bash
-npm install
+npm ci --ignore-scripts
 npm run dev
 ```
 
@@ -218,7 +218,7 @@ O WhatsApp é um serviço externo e pode receber dados pessoais ou de saúde dur
 ## Limitações conhecidas
 
 - A metadata `homepageUrl` do GitHub está desatualizada e aponta para uma URL indisponível; a URL pública real é `https://drbarcellos.vercel.app`.
-- Não há lockfile, testes, lint ou CI.
+- Há lockfile canônico; não há suíte de testes, lint ou CI.
 - A instalação npm observada em 2026-08-11 reportou 1 vulnerabilidade moderada e 1 alta; a ausência de lockfile impede uma triagem determinística e nenhuma correção forçada foi aplicada.
 - Tailwind depende do CDN.
 - O import map de `index.html` aponta para versões diferentes das declaradas em `package.json`.
@@ -253,3 +253,7 @@ Mudanças visuais ou interativas também devem ser verificadas em desktop, table
 - overflow horizontal e reflow.
 
 Consulte [AGENTS.md](./AGENTS.md) antes de editar, especialmente para claims médicos, dados, acessibilidade, SEO e publicação.
+
+## Dependências e runtime — 23/10/2026
+
+Node 24.22.1 (`.nvmrc`; plataformas: `engines.node=24.x`). npm 12.2.1, Vite 6.4.5, React 18.3.1 e override source-map-js 1.2.2; instalação congelada: `npm ci --ignore-scripts`. Valide com `node node_modules/typescript/bin/tsc --noEmit` e `npm run build`. As dependências locais não utilizadas autoprefixer, postcss e tailwindcss foram removidas; o Tailwind CDN e toda a fonte do produto de origin/main foram preservados. Os quatro commits locais de conteúdo/SEO/assets/rodapé não integram este candidato. A qualificação local de dependências compara o produto com a base remota; não certifica publicação ou conformidade clínica. Conteúdo, contatos, assets e regras do produto permanecem na base selecionada.
