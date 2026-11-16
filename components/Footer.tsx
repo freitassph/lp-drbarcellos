@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/5 flex flex-col items-center gap-2 text-[10px] text-slate-500 tracking-widest">
           <p className="uppercase">DESIGNED FOR EXCELLENCE</p>
           <a 
-            href="https://www.instagram.com/freitas.lab/" 
+            href="https://www.instagram.com/eupedrofreitas_/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="lowercase hover:text-med-sage transition-colors duration-300"
