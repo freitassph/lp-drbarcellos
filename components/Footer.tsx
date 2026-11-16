@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="lowercase hover:text-med-sage transition-colors duration-300"
           >
-            @freitas.lab
+            @eupedrofreitas_
           </a>
         </div>
       </div>
